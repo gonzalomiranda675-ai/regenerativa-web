@@ -497,7 +497,10 @@
   /* ---------- Metodología ---------- */
   .metodologia{
     position:relative;
+    background:var(--crema);
   }
+  #metodologia h2{color:var(--oscuro)}
+  #metodologia .eyebrow{color:var(--verde-500)}
   .fases{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -784,9 +787,9 @@
 
   /* ---------- Footer ---------- */
   footer{
-    background:var(--oscuro);
+    background:var(--crema);
     padding:50px 0 34px;
-    border-top:1px solid rgba(255,255,255,.08);
+    border-top:1px solid #e7ede8;
   }
   .footer-fila{
     display:flex;
@@ -795,21 +798,21 @@
     flex-wrap:wrap;
     gap:20px;
   }
-  .footer-fila .marca{font-size:1rem}
+  .footer-fila .marca{font-size:1rem;color:var(--oscuro)}
   .footer-links{
     display:flex;
     gap:28px;
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
     font-size:.85rem;
-    color:rgba(255,255,255,.5);
+    color:var(--gris);
   }
-  .footer-links a:hover{color:var(--verde-300)}
+  .footer-links a:hover{color:var(--verde-600)}
   .footer-copy{
     font-size:.82rem;
-    color:rgba(255,255,255,.35);
+    color:var(--gris);
     margin-top:30px;
     padding-top:24px;
-    border-top:1px solid rgba(255,255,255,.06);
+    border-top:1px solid #e7ede8;
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
   }
 
@@ -960,7 +963,7 @@
   </div>
 </section>
 
-<section class="seccion" id="servicios">
+<section class="seccion" id="servicios" style="background:var(--crema);">
   <div class="contenedor">
     <div class="encabezado-seccion centrado revelar">
       <p class="eyebrow">Qué hacemos</p>
@@ -996,7 +999,7 @@
   </div>
 </section>
 
-<section class="seccion" id="sectores">
+<section class="seccion" id="sectores" style="background:var(--crema);">
   <div class="contenedor">
     <div class="encabezado-seccion centrado revelar">
       <p class="eyebrow">A quién servimos</p>
@@ -1062,7 +1065,7 @@
   </div>
 </section>
 
-<section class="seccion" id="resultados">
+<section class="seccion" id="resultados" style="background:var(--crema);">
   <div class="contenedor">
     <div class="encabezado-seccion centrado revelar">
       <p class="eyebrow">Resultados</p>
