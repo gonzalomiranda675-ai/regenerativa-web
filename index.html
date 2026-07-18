@@ -303,11 +303,6 @@
 
   /* ---------- Secciones genéricas ---------- */
   .seccion{padding:130px 0}
-  .seccion-oscura{
-    background:linear-gradient(180deg, var(--carbon), var(--verde-900));
-    color:rgba(255,255,255,.85);
-  }
-  .seccion-oscura h2{color:var(--blanco)}
   .encabezado-seccion{
     max-width:680px;
     margin-bottom:64px;
@@ -326,20 +321,18 @@
   /* ---------- Problema del mercado ---------- */
   .problema{
     background:
-      linear-gradient(rgba(10,31,22,.55), rgba(10,31,22,.55)),
+      linear-gradient(rgba(247,249,246,.88), rgba(247,249,246,.88)),
       url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1200&q=80') center/cover no-repeat,
-      linear-gradient(160deg, var(--verde-900), var(--oscuro));
+      var(--crema);
   }
-  .problema-interior .eyebrow{color:var(--verde-300)}
   .problema-interior h2{
-    color:var(--blanco);
     max-width:700px;
     margin:16px 0 26px;
     font-size:clamp(2rem,3.4vw,2.6rem);
     line-height:1.22;
   }
   .problema-interior p.parrafo{
-    color:rgba(255,255,255,.82);
+    color:#3a453e;
     max-width:640px;
     font-size:1.08rem;
     margin-bottom:18px;
@@ -348,15 +341,10 @@
   /* ---------- About (Nosotros) ---------- */
   .seccion-nosotros{
     background:
-      linear-gradient(rgba(10,31,22,.55), rgba(10,31,22,.55)),
+      linear-gradient(rgba(247,249,246,.88), rgba(247,249,246,.88)),
       url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80') center/cover no-repeat,
-      linear-gradient(180deg, var(--carbon), var(--verde-900));
+      var(--crema);
   }
-  .seccion-nosotros .eyebrow{color:var(--verde-300)}
-  .seccion-nosotros h2{color:var(--blanco)}
-  .seccion-nosotros .about-texto p{color:rgba(255,255,255,.8)}
-  .seccion-nosotros .about-texto p.primer-parrafo::first-letter{color:var(--verde-300)}
-  .seccion-nosotros .credenciales{border:1px solid rgba(255,255,255,.12)}
 
   .about-grid{
     display:grid;
@@ -523,8 +511,8 @@
     top:29px;
     left:6%;
     right:6%;
-    height:1px;
-    background:linear-gradient(90deg, rgba(107,194,144,.05), rgba(107,194,144,.35), rgba(107,194,144,.05));
+    height:2px;
+    background:linear-gradient(90deg, rgba(31,87,56,.08), rgba(31,87,56,.4), rgba(31,87,56,.08));
   }
   .fase{
     position:relative;
@@ -534,9 +522,8 @@
   .fase-numero{
     width:58px;height:58px;
     border-radius:50%;
-    background:var(--verde-800);
-    border:1px solid var(--verde-500);
-    color:var(--verde-300);
+    background:linear-gradient(135deg, var(--verde-700), var(--verde-500));
+    color:var(--blanco);
     display:flex;align-items:center;justify-content:center;
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
     font-weight:800;
@@ -544,15 +531,16 @@
     margin-bottom:26px;
     position:relative;
     z-index:2;
+    box-shadow:0 8px 20px rgba(31,87,56,.25);
   }
   .fase h3{
-    color:var(--blanco);
+    color:var(--oscuro);
     font-size:1.15rem;
     letter-spacing:.02em;
     margin-bottom:12px;
   }
   .fase p{
-    color:rgba(255,255,255,.6);
+    color:var(--gris);
     font-size:.92rem;
     font-family:'Georgia',serif;
   }
@@ -589,43 +577,90 @@
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
   }
 
-  .caso-estudio{
-    background:linear-gradient(120deg, var(--verde-900), var(--verde-700));
-    border-radius:var(--radio);
-    padding:60px;
+  .casos-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-    color:var(--blanco);
+    grid-template-columns:1.3fr 1fr;
+    gap:28px;
+    align-items:stretch;
+  }
+  .caso-estudio{
+    background:var(--blanco);
+    border:1px solid #e7ede8;
+    border-radius:var(--radio);
+    padding:48px 44px;
     box-shadow:var(--sombra);
-  }
-  .caso-estudio .eyebrow{color:var(--verde-300)}
-  .caso-estudio h3{
-    color:var(--blanco);
-    font-size:1.8rem;
-    margin:16px 0 18px;
-  }
-  .caso-estudio p{
-    color:rgba(255,255,255,.78);
-    font-size:1.02rem;
-  }
-  .caso-lista{
     display:flex;
     flex-direction:column;
-    gap:22px;
   }
-  .caso-fila{
+  .caso-estudio .eyebrow{color:var(--verde-500)}
+  .caso-estudio h3{
+    color:var(--oscuro);
+    font-size:1.6rem;
+    margin:14px 0 16px;
+    line-height:1.25;
+  }
+  .caso-estudio .caso-desc{
+    color:var(--gris);
+    font-size:1rem;
+    margin-bottom:auto;
+    padding-bottom:28px;
+  }
+  .caso-stat-principal{
     display:flex;
-    justify-content:space-between;
     align-items:baseline;
-    padding-bottom:18px;
-    border-bottom:1px solid rgba(255,255,255,.14);
+    gap:14px;
+    flex-wrap:wrap;
+    padding:22px 0;
+    border-top:1px solid #e7ede8;
+    border-bottom:1px solid #e7ede8;
+    margin-bottom:24px;
+  }
+  .caso-stat-principal strong{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:2.6rem;
+    font-weight:800;
+    background:linear-gradient(135deg, var(--verde-700), var(--verde-500));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .caso-stat-principal span{
+    color:var(--gris);
+    font-size:.95rem;
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
   }
-  .caso-fila:last-child{border-bottom:none;padding-bottom:0}
-  .caso-fila span{color:rgba(255,255,255,.6);font-size:.92rem}
-  .caso-fila strong{color:var(--blanco);font-size:1.3rem}
+  .caso-substats{
+    display:flex;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .caso-substats div{display:flex;flex-direction:column;gap:4px}
+  .caso-substats strong{
+    color:var(--verde-700);
+    font-size:1.1rem;
+    font-weight:800;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+  .caso-substats span{
+    color:var(--gris);
+    font-size:.82rem;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+  .caso-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--verde-100);
+    color:var(--verde-700);
+    padding:9px 18px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:.85rem;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    margin-top:auto;
+    align-self:flex-start;
+  }
 
   /* ---------- Contacto ---------- */
   .contacto{
@@ -786,7 +821,8 @@
     .fases{grid-template-columns:repeat(2,1fr);row-gap:50px}
     .fases::before{display:none}
     .resultados-grid{grid-template-columns:repeat(2,1fr)}
-    .caso-estudio{grid-template-columns:1fr;padding:44px}
+    .casos-grid{grid-template-columns:1fr}
+    .caso-estudio{padding:36px}
     .contacto-grid{grid-template-columns:1fr;gap:56px}
   }
 
@@ -886,9 +922,8 @@
     <div class="about-grid">
       <div class="about-texto revelar">
         <p class="eyebrow">Quiénes somos</p>
-        <h2 style="margin:14px 0 30px;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.2;">Experiencia técnica al servicio de decisiones de negocio.</h2>
-        <p class="primer-parrafo">Regenerativa Sostenible S.A.C. nació de una convicción simple: la sostenibilidad inmobiliaria deja de ser un costo quirúrgico cuando se gestiona con el mismo rigor que cualquier otra inversión de capital. Acompañamos a nuestros clientes desde el diagnóstico inicial hasta la certificación y el monitoreo continuo, traduciendo estándares técnicos internacionales en planes de acción concretos que protegen el valor del activo y reducen su exposición a riesgos regulatorios y de mercado.</p>
-        <p>Somos, hasta la fecha, la única consultora del Perú con la credencial GRESB Approved Partner, y contamos con la certificación LEED AP O+M que respalda la profundidad técnica detrás de cada recertificación que gestionamos. Esta trayectoria incluye haber liderado el Perú Green Building Council como CEO, una posición desde la que impulsamos la adopción de estándares de edificación sostenible a nivel nacional y que hoy se traduce en una comprensión integral tanto del marco normativo local como de las exigencias de los inversionistas internacionales.</p>
+        <h2 style="margin:14px 0 30px;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.2;">Liderado por el primer GRESB AP del Perú.</h2>
+        <p class="primer-parrafo">Regenerativa Sostenible S.A.C. es liderada por Héctor Gonzalo Miranda Plaza, especialista en modernización de activos, desempeño operativo y transformación empresarial con más de 20 años de experiencia en sostenibilidad aplicada en América Latina. Como primer y único GRESB Accredited Professional del Perú, LEED AP O+M, CIPS y ex-CEO del Peru Green Building Council, Héctor conecta estándares globales con decisiones de negocio concretas que protegen y elevan el valor de los activos inmobiliarios.</p>
       </div>
       <div class="credenciales revelar revelar-2">
         <h3>Credenciales y trayectoria</h3>
@@ -925,7 +960,7 @@
   </div>
 </section>
 
-<section class="seccion seccion-oscura" id="servicios">
+<section class="seccion" id="servicios">
   <div class="contenedor">
     <div class="encabezado-seccion centrado revelar">
       <p class="eyebrow">Qué hacemos</p>
@@ -996,11 +1031,11 @@
   </div>
 </section>
 
-<section class="seccion metodologia" id="metodologia" style="background:linear-gradient(180deg, var(--verde-900), var(--oscuro));">
+<section class="seccion metodologia" id="metodologia" style="background:var(--crema);">
   <div class="contenedor">
     <div class="encabezado-seccion centrado revelar">
-      <p class="eyebrow" style="color:var(--verde-300)">Cómo trabajamos</p>
-      <h2 style="color:#fff">Una metodología de cuatro fases, sin atajos</h2>
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Una metodología de cuatro fases, sin atajos</h2>
     </div>
     <div class="fases">
       <div class="fase revelar revelar-1">
@@ -1040,16 +1075,26 @@
       <div class="estadistica"><strong>+10</strong><span>Años de experiencia en el sector</span></div>
     </div>
 
-    <div class="caso-estudio revelar revelar-2">
-      <div>
+    <div class="casos-grid revelar revelar-2">
+      <div class="caso-estudio">
         <p class="eyebrow">Caso de estudio</p>
         <h3>Pontificia Universidad Católica del Perú</h3>
-        <p>Acompañamos a la PUCP en la certificación y recertificación LEED de seis edificios de su campus, integrando mejoras operativas continuas que redujeron de forma sostenida el consumo energético del portafolio evaluado, sin comprometer la experiencia de la comunidad universitaria.</p>
+        <p class="caso-desc">Acompañamos a la PUCP en la certificación y recertificación LEED de seis edificios de su campus, integrando mejoras operativas continuas que redujeron de forma sostenida el consumo energético del portafolio evaluado, sin comprometer la experiencia de la comunidad universitaria.</p>
+        <div class="caso-stat-principal">
+          <strong>$500K</strong>
+          <span>en ahorros anuales</span>
+        </div>
+        <div class="caso-substats">
+          <div><strong>30%</strong><span>Reducción energética</span></div>
+          <div><strong>6</strong><span>Edificios LEED Gold</span></div>
+          <div><strong>Campus completo</strong><span>Alcance del proyecto</span></div>
+        </div>
       </div>
-      <div class="caso-lista">
-        <div class="caso-fila"><span>Edificios certificados LEED Gold</span><strong>6</strong></div>
-        <div class="caso-fila"><span>Reducción de consumo energético</span><strong>30%</strong></div>
-        <div class="caso-fila"><span>Alcance del proyecto</span><strong>Campus completo</strong></div>
+      <div class="caso-estudio">
+        <p class="eyebrow">Caso de estudio</p>
+        <h3>Centro de Convenciones PUCP Camino Real</h3>
+        <p class="caso-desc">Certificación LEED Platinum para un espacio institucional de alto tráfico, demostrando que el máximo nivel de certificación es alcanzable incluso en activos de uso intensivo y agenda operativa compleja.</p>
+        <span class="caso-badge">Certificación LEED Platinum</span>
       </div>
     </div>
   </div>
