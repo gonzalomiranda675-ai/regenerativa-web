@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regenerativa Asset Twin™ | Gemelo Digital de Desempeño Inmobiliario</title>
+<meta name="description" content="Visualice el desempeño de un edificio, identifique brechas y simule escenarios de energía, carbono, operación, mantenimiento y preparación ESG con Regenerativa Asset Twin™.">
+<link rel="canonical" href="https://herramientas.regenerativat.com/asset-twin/">
+<meta property="og:title" content="Regenerativa Asset Twin™ | Gemelo Digital de Desempeño Inmobiliario">
+<meta property="og:description" content="Visualice el desempeño de un edificio, identifique brechas y simule escenarios de energía, carbono, operación, mantenimiento y preparación ESG con Regenerativa Asset Twin™.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://herramientas.regenerativat.com/asset-twin/">
+<meta property="og:image" content="https://herramientas.regenerativat.com/asset-twin/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Regenerativa Asset Twin™",
+  "description": "Gemelo Digital Ejecutivo de Desempeño del Activo. Visualice brechas, simule escenarios y priorice inversiones desde una representación ejecutiva de su edificio o portafolio.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://herramientas.regenerativat.com/asset-twin/",
+  "publisher": { "@type": "Organization", "name": "Regenerativa", "url": "https://www.regenerativat.com" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<!-- HUBSPOT TRACKING CODE — Portal ID: 51373533 -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/51373533.js"></script>
+
+<style>
+:root {
+  --green-deep: #123D2A; --green-medium: #267A50; --green-light: #57AE79;
+  --cream: #F5F2E9; --white: #FFFFFF; --gray-warm: #69736D; --gray-light: #E2E6E1;
+  --gold: #C69A45; --red-risk: #C84C4C; --amber: #D99332;
+  --shadow-sm: 0 1px 3px rgba(18, 61, 42, 0.06); --shadow-md: 0 4px 12px rgba(18, 61, 42, 0.08);
+  --shadow-lg: 0 12px 32px rgba(18, 61, 42, 0.12); --radius-sm: 8px; --radius-md: 12px;
+  --radius-lg: 18px; --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Inter', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: var(--green-deep); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 400; line-height: 1.2; color: var(--green-deep); }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); } h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); } h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+p { color: var(--gray-warm); font-size: 0.95rem; }
+a { color: var(--green-medium); text-decoration: none; transition: var(--transition); } a:hover { color: var(--green-deep); }
+button { font-family: var(--font-sans); cursor: pointer; border: none; background: none; }
+img { max-width: 100%; height: auto; display: block; }
+.mono { font-family: var(--font-mono); }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.badge-green { background: rgba(38, 122, 80, 0.1); color: var(--green-medium); }
+.badge-gold { background: rgba(198, 154, 69, 0.12); color: var(--gold); }
+.badge-amber { background: rgba(217, 147, 50, 0.12); color: var(--amber); }
+.badge-red { background: rgba(200, 76, 76, 0.1); color: var(--red-risk); }
+.badge-cream { background: var(--cream); color: var(--green-deep); }
+
+.eyebrow { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--green-medium); margin-bottom: 12px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; transition: var(--transition); border: 2px solid transparent; cursor: pointer; text-decoration: none; white-space: nowrap; }
+.btn-primary { background: var(--green-deep); color: var(--white); } .btn-primary:hover { background: var(--green-medium); transform: translateY(-1px); box-shadow: var(--shadow-md); color: var(--white); }
+.btn-secondary { background: transparent; color: var(--green-deep); border-color: var(--green-deep); } .btn-secondary:hover { background: var(--green-deep); color: var(--white); }
+.btn-gold { background: var(--gold); color: var(--white); } .btn-gold:hover { background: #b8893a; color: var(--white); }
+.btn-ghost { background: transparent; color: var(--green-medium); padding: 10px 16px; } .btn-ghost:hover { background: var(--cream); color: var(--green-deep); }
+.btn-full { width: 100%; } .btn-sm { padding: 8px 16px; font-size: 0.82rem; }
+.btn:focus-visible { outline: 3px solid var(--green-light); outline-offset: 2px; }
+
+.nav-bar { position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-light); }
+.nav-bar.hidden { display: none; }
+.nav-content { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1280px; margin: 0 auto; gap: 16px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; flex-shrink: 0; }
+.nav-logo-text { font-family: var(--font-serif); font-size: 1.15rem; color: var(--green-deep); line-height: 1.1; }
+.nav-logo-sub { font-size: 0.65rem; color: var(--green-medium); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
+.nav-logo-mark { width: 36px; height: 36px; background: var(--green-deep); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--cream); font-family: var(--font-serif); font-size: 1.2rem; }
+.nav-steps { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.nav-step { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 500; color: var(--gray-warm); transition: var(--transition); cursor: pointer; }
+.nav-step:hover { background: var(--cream); color: var(--green-deep); } .nav-step.active { background: var(--green-deep); color: var(--white); }
+.nav-step-num { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; background: var(--gray-light); color: var(--gray-warm); }
+.nav-step.active .nav-step-num { background: var(--green-light); color: var(--green-deep); }
+.nav-actions { display: flex; align-items: center; gap: 8px; }
+.nav-mobile-toggle { display: none; }
+
+.stage { display: none; animation: fadeIn 0.5s ease; }
+.stage.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.hero { min-height: 100vh; background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+.hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(var(--gray-light) 1px, transparent 1px), linear-gradient(90deg, var(--gray-light) 1px, transparent 1px); background-size: 60px 60px; opacity: 0.3; pointer-events: none; }
+.hero-top { display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; z-index: 2; }
+.hero-content { flex: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; padding: 0 48px 48px; max-width: 1400px; margin: 0 auto; width: 100%; z-index: 2; }
+.hero-text { max-width: 600px; }
+.hero-label { display: inline-block; padding: 6px 16px; background: rgba(38, 122, 80, 0.08); border: 1px solid rgba(38, 122, 80, 0.15); border-radius: 100px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--green-medium); margin-bottom: 24px; }
+.hero h1 { margin-bottom: 20px; } .hero h1 .accent { color: var(--green-medium); font-style: italic; }
+.hero-subtitle { font-size: 1.1rem; color: var(--gray-warm); margin-bottom: 16px; max-width: 520px; }
+.hero-support { font-size: 0.9rem; color: var(--green-deep); opacity: 0.7; margin-bottom: 32px; max-width: 520px; border-left: 3px solid var(--green-light); padding-left: 16px; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+.hero-attributes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 600px; }
+.hero-attr { padding: 20px; background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius-md); transition: var(--transition); }
+.hero-attr:hover { border-color: var(--green-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.hero-attr-icon { width: 40px; height: 40px; border-radius: var(--radius-sm); background: rgba(38, 122, 80, 0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; color: var(--green-medium); }
+.hero-attr h4 { font-family: var(--font-sans); font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; } .hero-attr p { font-size: 0.78rem; }
+
+.hero-visual { position: relative; height: 500px; display: flex; align-items: center; justify-content: center; }
+.building-art { position: relative; width: 280px; height: 420px; }
+.building-tower { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 200px; height: 360px; background: linear-gradient(180deg, var(--green-deep) 0%, #0d2e1f 100%); border-radius: 8px 8px 0 0; box-shadow: var(--shadow-lg); overflow: hidden; }
+.building-tower::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0px, transparent 28px, rgba(87, 174, 121, 0.08) 28px, rgba(87, 174, 121, 0.08) 30px); }
+.building-windows { position: absolute; inset: 20px 16px 40px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.building-window { background: rgba(87, 174, 121, 0.15); border-radius: 2px; } .building-window.lit { background: rgba(198, 154, 69, 0.25); animation: flicker 4s infinite; }
+@keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+.building-base { position: absolute; bottom: 0; left: -20px; right: -20px; height: 40px; background: linear-gradient(180deg, #0a2418 0%, #061810 100%); border-radius: 4px; }
+.building-antenna { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 3px; height: 30px; background: var(--green-deep); }
+.building-antenna::after { content: ''; position: absolute; top: -4px; left: -3px; width: 9px; height: 9px; background: var(--red-risk); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+.scan-line { position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--green-light), transparent); animation: scan 4s infinite; }
+@keyframes scan { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+.float-card { position: absolute; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); border: 1px solid var(--gray-light); border-radius: var(--radius-md); padding: 12px 16px; box-shadow: var(--shadow-md); animation: floatCard 6s ease-in-out infinite; z-index: 3; }
+.float-card-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-warm); font-weight: 600; }
+.float-card-value { font-family: var(--font-mono); font-size: 1.3rem; font-weight: 600; color: var(--green-deep); }
+.float-card-trend { font-size: 0.7rem; color: var(--green-medium); font-weight: 600; }
+.float-card-1 { top: 20px; left: -40px; } .float-card-2 { top: 140px; right: -50px; animation-delay: 1.5s; } .float-card-3 { bottom: 80px; left: -60px; animation-delay: 3s; }
+@keyframes floatCard { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.data-dot { position: absolute; width: 8px; height: 8px; background: var(--green-light); border-radius: 50%; box-shadow: 0 0 0 4px rgba(87, 174, 121, 0.2); animation: dataPulse 2s infinite; }
+@keyframes dataPulse { 0%, 100% { box-shadow: 0 0 0 4px rgba(87, 174, 121, 0.2); } 50% { box-shadow: 0 0 0 8px rgba(87, 174, 121, 0); } }
+
+.section-header { padding: 48px 0 32px; }
+.filters-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; align-items: center; }
+.filter-group { display: flex; flex-direction: column; gap: 4px; }
+.filter-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-warm); }
+.filter-select { padding: 8px 32px 8px 12px; border: 1px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--green-deep); background: var(--white); cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2369736D' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
+.portfolio-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+.building-card { background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition); cursor: pointer; display: flex; flex-direction: column; }
+.building-card:hover { border-color: var(--green-light); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.building-card-img { height: 160px; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-medium) 100%); }
+.building-card-img-windows { position: absolute; bottom: 20px; left: 20px; right: 20px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.building-card-img-windows span { height: 12px; background: rgba(255, 255, 255, 0.15); border-radius: 1px; } .building-card-img-windows span.lit { background: rgba(198, 154, 69, 0.4); }
+.building-card-risk { position: absolute; top: 12px; right: 12px; z-index: 2; }
+.building-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.building-card-type { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green-medium); }
+.building-card-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 16px; padding: 12px 0; border-top: 1px solid var(--gray-light); border-bottom: 1px solid var(--gray-light); }
+.building-card-stat-label { font-size: 0.68rem; text-transform: uppercase; color: var(--gray-warm); }
+.building-card-stat-value { font-family: var(--font-mono); font-size: 0.88rem; font-weight: 600; }
+.building-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; gap: 12px; }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(18, 61, 42, 0.5); backdrop-filter: blur(4px); z-index: 200; display: none; align-items: center; justify-content: center; padding: 24px; }
+.modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+.modal { background: var(--white); border-radius: var(--radius-lg); max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-lg); }
+.modal-header { padding: 24px; border-bottom: 1px solid var(--gray-light); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--white); }
+.modal-body { padding: 24px; }
+.modal-close { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--cream); color: var(--green-deep); }
+
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; } .form-group.full { grid-column: 1 / -1; }
+.form-label { font-size: 0.78rem; font-weight: 600; color: var(--green-deep); }
+.form-input, .form-select { padding: 10px 14px; border: 1px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 0.88rem; font-family: var(--font-sans); color: var(--green-deep); background: var(--white); }
+.form-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px; }
+
+.dashboard-header { background: var(--green-deep); color: var(--white); padding: 32px 0; }
+.dashboard-header h2 { color: var(--white); }
+.dashboard-header-meta { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 16px; }
+.dashboard-meta-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(245, 242, 233, 0.6); }
+.dashboard-meta-value { font-family: var(--font-mono); font-size: 1rem; color: var(--white); }
+.dashboard-status { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; background: rgba(87, 174, 121, 0.15); color: var(--green-light); margin-top: 8px; }
+
+.index-hero { display: grid; grid-template-columns: 300px 1fr; gap: 40px; padding: 40px 0; align-items: center; }
+.index-gauge-container { position: relative; width: 280px; height: 180px; margin: 0 auto; }
+.index-gauge-value { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); text-align: center; }
+.index-gauge-number { font-family: var(--font-serif); font-size: 3.5rem; line-height: 1; color: var(--green-deep); }
+.methodological-note { display: flex; align-items: flex-start; gap: 8px; padding: 12px 16px; background: var(--cream); border-radius: var(--radius-sm); font-size: 0.78rem; color: var(--gray-warm); }
+
+.dimensions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; margin: 32px 0; }
+.dimension-card { background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius-md); padding: 24px; transition: var(--transition); position: relative; overflow: hidden; }
+.dimension-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green-medium); }
+.dimension-card.risk::before { background: var(--red-risk); } .dimension-card.warning::before { background: var(--amber); } .dimension-card.good::before { background: var(--green-light); }
+.dimension-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.dimension-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); background: rgba(38, 122, 80, 0.08); display: flex; align-items: center; justify-content: center; color: var(--green-medium); }
+.dimension-score-num { font-family: var(--font-mono); font-size: 2rem; font-weight: 600; line-height: 1; }
+
+.exec-indicators { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin: 32px 0; }
+.charts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 32px 0; }
+.chart-card { background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius-md); padding: 24px; }
+.chart-container { position: relative; height: 280px; } .chart-container.short { height: 220px; }
+
+.diagnosis-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; border-bottom: 1px solid var(--gray-light); }
+.diagnosis-tab { padding: 12px 20px; font-size: 0.88rem; font-weight: 600; color: var(--gray-warm); border: none; background: none; border-bottom: 3px solid transparent; cursor: pointer; margin-bottom: -1px; }
+.diagnosis-tab.active { color: var(--green-deep); border-bottom-color: var(--green-medium); }
+.diagnosis-module { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.diagnosis-panel { background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius-md); padding: 24px; }
+.urgency-banner { display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-radius: var(--radius-sm); margin-top: 16px; }
+.urgency-high { background: rgba(200, 76, 76, 0.08); } .urgency-medium { background: rgba(217, 147, 50, 0.08); } .urgency-low { background: rgba(87, 174, 121, 0.08); }
+.recommendation-box { background: var(--green-deep); color: var(--white); padding: 20px; border-radius: var(--radius-sm); margin-top: 16px; }
+
+.simulator-layout { display: grid; grid-template-columns: 380px 1fr; gap: 32px; margin: 32px 0; }
+.simulator-controls { background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius-lg); padding: 24px; position: sticky; top: 80px; align-self: start; max-height: calc(100vh - 100px); overflow-y: auto; }
+.slider { -webkit-appearance: none; width: 100%; height: 6px; border-radius: 3px; background: var(--gray-light); outline: none; }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--green-deep); cursor: pointer; border: 3px solid var(--white); }
+.slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--green-deep); cursor: pointer; border: 3px solid var(--white); }
+.toggle-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border: 1px solid var(--gray-light); border-radius: var(--radius-sm); cursor: pointer; margin-bottom: 8px; }
+.toggle-item.active { border-color: var(--green-medium); background: rgba(38, 122, 80, 0.04); }
+.toggle-switch { width: 40px; height: 22px; background: var(--gray-light); border-radius: 100px; position: relative; }
+.toggle-switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: var(--white); border-radius: 50%; }
+.toggle-item.active .toggle-switch { background: var(--green-medium); } .toggle-item.active .toggle-switch::after { left: 21px; }
+.investment-selector { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.investment-option { padding: 10px 8px; text-align: center; border: 1px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 0.78rem; font-weight: 600; cursor: pointer; }
+.investment-option.active { background: var(--green-deep); color: var(--white); border-color: var(--green-deep); }
+
+.results-summary { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+.result-card { background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius-md); padding: 20px; }
+.result-card.primary { background: var(--green-deep); color: var(--white); border-color: var(--green-deep); }
+.result-card-old { font-family: var(--font-mono); font-size: 1rem; color: var(--gray-warm); text-decoration: line-through; opacity: 0.6; }
+.result-card-new { font-family: var(--font-mono); font-size: 1.6rem; font-weight: 600; color: var(--green-deep); }
+.result-card.primary .result-card-new { color: var(--white); }
+.delta-positive { color: var(--green-medium); } .delta-negative { color: var(--red-risk); }
+.executive-reading { background: var(--cream); border-left: 4px solid var(--gold); border-radius: var(--radius-sm); padding: 20px 24px; margin-top: 24px; }
+
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin: 32px 0; }
+.service-card { background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius-md); padding: 24px; }
+
+.roadmap-phases { display: flex; flex-direction: column; gap: 20px; }
+.roadmap-phase { display: grid; grid-template-columns: 60px 1fr; gap: 20px; }
+.roadmap-phase-marker { width: 56px; height: 56px; border-radius: 50%; background: var(--white); border: 3px solid var(--green-medium); display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 1.4rem; }
+.roadmap-phase-content { background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius-md); padding: 24px; }
+
+.building-map-layout { display: grid; grid-template-columns: 1fr 380px; gap: 32px; margin: 32px 0; }
+.bmap-zone { cursor: pointer; transition: var(--transition); } .bmap-zone:hover { filter: brightness(1.1); }
+
+.comparison-selector { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.comparison-chip { padding: 10px 16px; border: 2px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+.comparison-chip.selected { border-color: var(--green-deep); background: var(--green-deep); color: var(--white); }
+.comparison-table th, .comparison-table td { padding: 14px 16px; text-align: center; border-bottom: 1px solid var(--gray-light); }
+.comparison-table th { background: var(--green-deep); color: var(--white); }
+
+.report-page { background: var(--white); border: 1px solid var(--gray-light); border-radius: var(--radius-lg); padding: 48px; margin-bottom: 24px; }
+.report-cover { text-align: center; padding: 80px 48px; background: linear-gradient(180deg, var(--green-deep) 0%, #0d2e1f 100%); color: var(--white); border-radius: var(--radius-lg); }
+.lead-capture { background: linear-gradient(135deg, var(--green-deep) 0%, #0d2e1f 100%); border-radius: var(--radius-lg); padding: 48px; color: var(--white); text-align: center; }
+.lead-form-container { max-width: 500px; margin: 0 auto; background: var(--white); border-radius: var(--radius-md); padding: 32px; }
+
+.footer { background: var(--green-deep); color: var(--cream); padding: 48px 0 24px; margin-top: 64px; }
+.footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+@media print {
+  .nav-bar, .footer, .report-actions, .modal-overlay, .hero-buttons, .filters-bar, .simulator-controls, .btn { display: none !important; }
+  .stage { display: none !important; } #stage-report { display: block !important; }
+  .report-container { max-width: 100%; padding: 0; } .report-page { border: none; padding: 20px; page-break-after: always; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; } .simulator-layout { grid-template-columns: 1fr; }
+  .building-map-layout { grid-template-columns: 1fr; } .diagnosis-module { grid-template-columns: 1fr; }
+  .charts-grid { grid-template-columns: 1fr; } .index-hero { grid-template-columns: 1fr; text-align: center; }
+  .nav-steps { display: none; } .nav-mobile-toggle { display: flex; }
+}
+@media (max-width: 768px) {
+  .hero-attributes { grid-template-columns: 1fr; } .form-grid { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; } .footer-content { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav-bar hidden" id="navBar">
+  <div class="nav-content">
+    <div class="nav-logo" onclick="navigateTo('portfolio')">
+      <!-- REEMPLAZAR LOGO: Sustituir este div por <img src="./assets/logo-regenerativa.png" alt="Regenerativa" style="height:36px;" /> -->
+      <div class="nav-logo-mark">R</div>
+      <div>
+        <div class="nav-logo-text">Regenerativa</div>
+        <div class="nav-logo-sub">Asset Performance™</div>
+      </div>
+    </div>
+    <div class="nav-steps" id="navSteps">
+      <div class="nav-step" data-stage="portfolio" onclick="navigateTo('portfolio')"><span class="nav-step-num">1</span> Portafolio</div>
+      <div class="nav-step" data-stage="dashboard" onclick="navigateTo('dashboard')"><span class="nav-step-num">2</span> Gemelo</div>
+      <div class="nav-step" data-stage="diagnosis" onclick="navigateTo('diagnosis')"><span class="nav-step-num">3</span> Diagnóstico</div>
+      <div class="nav-step" data-stage="simulator" onclick="navigateTo('simulator')"><span class="nav-step-num">4</span> Simulador</div>
+      <div class="nav-step" data-stage="roadmap" onclick="navigateTo('roadmap')"><span class="nav-step-num">5</span> Ruta</div>
+      <div class="nav-step" data-stage="report" onclick="navigateTo('report')"><span class="nav-step-num">6</span> Reporte</div>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-ghost btn-sm" onclick="navigateTo('comparison')"><i data-lucide="git-compare"></i> Comparar</button>
+    </div>
+  </div>
+</nav>
+
+<!-- STAGE 1: COVER -->
+<section class="stage active" id="stage-cover">
+  <div class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-top">
+      <div class="nav-logo">
+        <!-- REEMPLAZAR LOGO -->
+        <div class="nav-logo-mark">R</div>
+        <div>
+          <div class="nav-logo-text">Regenerativa</div>
+          <div class="nav-logo-sub">Asset Performance™</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-label">Gemelo Digital Ejecutivo</span>
+        <h1>Convierta el desempeño de sus activos en <span class="accent">decisiones.</span></h1>
+        <p class="hero-subtitle">Visualice brechas, simule escenarios y priorice inversiones desde una representación ejecutiva de su edificio o portafolio.</p>
+        <p class="hero-support">Regenerativa Asset Twin™ integra operación, sostenibilidad, riesgo y valor en una sola lectura estratégica.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="navigateTo('portfolio')">Explorar el gemelo digital <i data-lucide="arrow-right" style="width:18px;height:18px;"></i></button>
+        </div>
+        <div class="hero-attributes">
+          <div class="hero-attr"><div class="hero-attr-icon"><i data-lucide="search" style="width:20px;height:20px;"></i></div><h4>Diagnóstico multidimensional</h4><p>Seis dimensiones evaluadas con criterios verificables.</p></div>
+          <div class="hero-attr"><div class="hero-attr-icon"><i data-lucide="sliders-horizontal" style="width:20px;height:20px;"></i></div><h4>Simulación de escenarios</h4><p>Proyecte el impacto de intervenciones.</p></div>
+          <div class="hero-attr"><div class="hero-attr-icon"><i data-lucide="route" style="width:20px;height:20px;"></i></div><h4>Hoja de ruta ejecutiva</h4><p>Cinco fases ordenadas por impacto.</p></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="building-art">
+          <div class="building-antenna"></div>
+          <div class="building-tower"><div class="building-windows" id="heroWindows"></div><div class="scan-line"></div></div>
+          <div class="building-base"></div>
+          <div class="float-card float-card-1"><div class="float-card-label">Índice</div><div class="float-card-value">74</div><div class="float-card-trend">En transición</div></div>
+          <div class="float-card float-card-2"><div class="float-card-label">Energía</div><div class="float-card-value">-18%</div><div class="float-card-trend">Potencial</div></div>
+          <div class="float-card float-card-3"><div class="float-card-label">ESG</div><div class="float-card-value">62</div><div class="float-card-trend">Indicativo</div></div>
+          <div class="data-dot" style="top: 30%; left: 10%;"></div>
+          <div class="data-dot" style="top: 60%; right: 5%; animation-delay: 0.5s;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 2: PORTFOLIO -->
+<section class="stage" id="stage-portfolio">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Portafolio demostrativo</span>
+      <h2>Seleccione un activo</h2>
+    </div>
+    <div class="portfolio-header">
+      <div class="filters-bar">
+        <div class="filter-group"><label class="filter-label">Tipología</label><select class="filter-select" id="filterType" onchange="renderPortfolio()"><option value="">Todas</option><option>Oficinas Clase A</option><option>Campus Empresarial</option><option>Logístico</option><option>Mixto</option><option>Oficinas Corporativo</option></select></div>
+        <div class="filter-group"><label class="filter-label">Ciudad</label><select class="filter-select" id="filterCity" onchange="renderPortfolio()"><option value="">Todas</option><option>Lima</option><option>Bogotá</option><option>Ciudad de México</option><option>Santiago</option><option>Quito</option></select></div>
+        <div class="filter-group"><label class="filter-label">Riesgo</label><select class="filter-select" id="filterRisk" onchange="renderPortfolio()"><option value="">Todos</option><option value="low">Bajo</option><option value="medium">Medio</option><option value="high">Alto</option></select></div>
+      </div>
+      <button class="btn btn-primary btn-sm" onclick="document.getElementById('createModal').classList.add('active')"><i data-lucide="plus" style="width:16px;height:16px;"></i> Crear un activo</button>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+  </div>
+</section>
+
+<!-- STAGE 3: DASHBOARD -->
+<section class="stage" id="stage-dashboard">
+  <div class="dashboard-header"><div class="container"><div id="dashboardHeaderContent"></div></div></div>
+  <div class="container">
+    <div class="index-hero">
+      <div class="index-gauge-container">
+        <svg class="index-gauge-svg" viewBox="0 0 200 130" width="280" height="180">
+          <path d="M 20 120 A 80 80 0 0 1 180 120" fill="none" stroke="#E2E6E1" stroke-width="12" stroke-linecap="round"/>
+          <path id="gaugeArc" d="M 20 120 A 80 80 0 0 1 180 120" fill="none" stroke="#267A50" stroke-width="12" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251"/>
+        </svg>
+        <div class="index-gauge-value"><div class="index-gauge-number" id="indexGaugeNumber">—</div><div class="eyebrow" style="margin:0;">Índice del Activo</div></div>
+      </div>
+      <div class="index-info" id="indexInfo"></div>
+    </div>
+    <div class="dimensions-grid" id="dimensionsGrid"></div>
+    <div class="exec-indicators" id="execIndicators"></div>
+    <div class="charts-grid">
+      <div class="chart-card"><h4>Radar de desempeño</h4><div class="chart-container"><canvas id="chartRadar"></canvas></div></div>
+      <div class="chart-card"><h4>Comparativo por dimensión</h4><div class="chart-container"><canvas id="chartBar"></canvas></div></div>
+      <div class="chart-card"><h4>Tendencia mensual</h4><div class="chart-container"><canvas id="chartTrend"></canvas></div></div>
+      <div class="chart-card"><h4>Distribución de costos</h4><div class="chart-container"><canvas id="chartCost"></canvas></div></div>
+    </div>
+    <div class="chart-card mb-4"><h4>Emisiones por fuente</h4><div class="chart-container short"><canvas id="chartEmissions"></canvas></div></div>
+
+    <h3 class="mt-4 mb-2">Mapa del edificio</h3>
+    <div class="building-map-layout">
+      <div class="chart-card" id="buildingMapContainer"></div>
+      <div class="bmap-zone-detail" id="bmapZoneDetail"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 4: DIAGNOSIS -->
+<section class="stage" id="stage-diagnosis">
+  <div class="container">
+    <div class="section-header"><span class="eyebrow">Diagnóstico multidimensional</span><h2>Seis módulos de evaluación</h2></div>
+    <div class="diagnosis-tabs" id="diagnosisTabs"></div>
+    <div id="diagnosisContent"></div>
+  </div>
+</section>
+
+<!-- STAGE 5: SIMULATOR -->
+<section class="stage" id="stage-simulator">
+  <div class="container">
+    <div class="section-header"><span class="eyebrow">Simulador de decisiones</span><h2>Simule escenarios de mejora</h2></div>
+    <div class="simulator-layout">
+      <div class="simulator-controls">
+        <h3>Parámetros del escenario</h3>
+        <div class="control-section"><div class="eyebrow">Reducciones operacionales</div><div id="simSliders"></div></div>
+        <div class="control-section"><div class="eyebrow">Mejoras de gestión</div><div id="simToggles"></div></div>
+        <div class="control-section"><div class="eyebrow">Inversión estimada</div><div class="investment-selector" id="investmentSelector"><div class="investment-option" data-value="low">Baja</div><div class="investment-option active" data-value="moderate">Moderada</div><div class="investment-option" data-value="high">Alta</div><div class="investment-option" data-value="transformative">Transform.</div></div></div>
+      </div>
+      <div class="simulator-results">
+        <div id="scenarioWarning"></div>
+        <div class="results-summary" id="resultsSummary"></div>
+        <div class="chart-card"><h4>Estado actual vs. Escenario propuesto</h4><div class="chart-container"><canvas id="chartScenario"></canvas></div></div>
+        <div class="executive-reading" id="executiveReading"><div class="eyebrow" style="color:var(--gold);">Lectura ejecutiva</div><p id="executiveReadingText"></p></div>
+        <h3 class="mt-4 mb-2">Capacidades activadas</h3><div class="services-grid" id="servicesGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE 6: ROADMAP -->
+<section class="stage" id="stage-roadmap">
+  <div class="container">
+    <div class="section-header"><span class="eyebrow">Hoja de ruta ejecutiva</span><h2>Cinco fases de transformación</h2></div>
+    <div class="roadmap-phases" id="roadmapPhases"></div>
+  </div>
+</section>
+
+<!-- STAGE 7: REPORT -->
+<section class="stage" id="stage-report">
+  <div class="container">
+    <div class="section-header"><span class="eyebrow">Reporte ejecutivo</span><h2>Informe del Asset Twin</h2></div>
+    <div class="report-actions">
+      <button class="btn btn-primary" onclick="window.print()"><i data-lucide="printer" style="width:16px;height:16px;"></i> Imprimir / Guardar PDF</button>
+      <button class="btn btn-secondary" onclick="navigateTo('portfolio')"><i data-lucide="building" style="width:16px;height:16px;"></i> Evaluar otro activo</button>
+    </div>
+    <div id="reportContainer"></div>
+    <div class="lead-capture">
+      <h3>Reciba la interpretación ejecutiva</h3>
+      <p style="color: rgba(245, 242, 233, 0.7); max-width: 500px; margin: 0 auto 32px;">Comparta sus datos para recibir una lectura técnica de los resultados y definir las prioridades de su activo.</p>
+      <div class="lead-form-container">
+        <!-- HUBSPOT FORM PLACEHOLDER: Reemplazar FORM_ID_A_REEMPLAZAR -->
+        <script src="https://js.hsforms.net/forms/embed/51373533.js" defer></script>
+        <div class="hs-form-frame" data-region="na1" data-form-id="FORM_ID_A_REEMPLAZAR" data-portal-id="51373533"></div>
+        <div style="margin-top: 20px; text-align: center;"><a href="https://www.regenerativat.com/contacto" target="_blank" class="btn btn-gold btn-sm">Solicitar conversación ejecutiva</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAGE: COMPARISON -->
+<section class="stage" id="stage-comparison">
+  <div class="container">
+    <div class="section-header"><span class="eyebrow">Comparación de portafolio</span><h2>Compare hasta cuatro activos</h2></div>
+    <div class="comparison-selector" id="comparisonSelector"></div>
+    <div id="comparisonContent"></div>
+  </div>
+</section>
+
+<!-- MODAL: CREATE ASSET -->
+<div class="modal-overlay" id="createModal">
+  <div class="modal">
+    <div class="modal-header"><h3>Crear un activo</h3><button class="modal-close" onclick="document.getElementById('createModal').classList.remove('active')"><i data-lucide="x"></i></button></div>
+    <div class="modal-body">
+      <form onsubmit="submitCreateAsset(event)">
+        <div class="form-grid">
+          <div class="form-group full"><label class="form-label">Nombre del activo</label><input class="form-input" name="name" required></div>
+          <div class="form-group"><label class="form-label">Tipo</label><select class="form-select" name="type" required><option value="">Seleccione...</option><option>Oficinas Clase A</option><option>Oficinas Corporativo</option><option>Campus Empresarial</option><option>Logístico</option><option>Mixto</option></select></div>
+          <div class="form-group"><label class="form-label">Ciudad</label><input class="form-input" name="city" required></div>
+          <div class="form-group"><label class="form-label">Área (m²)</label><input class="form-input" type="number" name="area" required></div>
+          <div class="form-group"><label class="form-label">Año</label><input class="form-input" type="number" name="year" required></div>
+          <div class="form-group"><label class="form-label">Ocupación (%)</label><input class="form-input" type="number" name="occupancy" required></div>
+          <div class="form-group"><label class="form-label">Energía (kWh/m²)</label><input class="form-input" type="number" name="energyIntensity" required></div>
+          <div class="form-group"><label class="form-label">Agua (m³/m²)</label><input class="form-input" type="number" step="0.01" name="waterIntensity" required></div>
+          <div class="form-group"><label class="form-label">Costo (USD/m²)</label><input class="form-input" type="number" name="operatingCost" required></div>
+          <div class="form-group"><label class="form-label">Emisiones (tCO₂e)</label><input class="form-input" type="number" name="emissions" required></div>
+        </div>
+        <div class="form-actions"><button type="button" class="btn btn-ghost" onclick="document.getElementById('createModal').classList.remove('active')">Cancelar</button><button type="submit" class="btn btn-primary">Guardar</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div>
+      <h3 style="color: var(--white);">Regenerativa Asset Twin™</h3>
+      <p style="color: rgba(245, 242, 233, 0.6); font-size: 0.85rem;">Del edificio físico a una inteligencia ejecutiva para decidir mejor.</p>
+      <p style="font-size: 0.78rem; color: rgba(245, 242, 233, 0.4); margin-top: 16px;">Los resultados corresponden a una simulación ejecutiva basada en la información incorporada. No sustituyen una auditoría técnica.</p>
+    </div>
+    <div><h4 style="font-family: var(--font-sans); font-size: 0.78rem; text-transform: uppercase; color: var(--green-light); margin-bottom: 12px;">Servicios</h4><ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;"><li><a href="https://www.regenerativat.com/leed-v5-om" target="_blank" style="color: rgba(245, 242, 233, 0.7); font-size: 0.85rem;">LEED v5 O+M</a></li><li><a href="https://www.regenerativat.com/ecometricas" target="_blank" style="color: rgba(245, 242, 233, 0.7); font-size: 0.85rem;">Ecométricas</a></li><li><a href="https://www.regenerativat.com/net-zero" target="_blank" style="color: rgba(245, 242, 233, 0.7); font-size: 0.85rem;">Net Zero</a></li></ul></div>
+    <div><h4 style="font-family: var(--font-sans); font-size: 0.78rem; text-transform: uppercase; color: var(--green-light); margin-bottom: 12px;">Contacto</h4><ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;"><li><a href="https://www.regenerativat.com/contacto" target="_blank" style="color: rgba(245, 242, 233, 0.7); font-size: 0.85rem;">Solicitar conversación</a></li></ul></div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   DATOS DE DEMOSTRACIÓN
+   ============================================================ */
+const buildings = [
+  { id: "torre-andina", name: "Torre Andina", type: "Oficinas Clase A", city: "Lima", area: 24500, year: 2016, occupancy: 87, energyIntensity: 186, waterIntensity: 0.78, emissions: 1240, operatingCost: 78, preventiveMaintenance: 62, dataQuality: 58, certifications: ["LEED Gold"], riskLevel: "medium", scores: { operation: 68, energyCarbon: 61, water: 70, maintenance: 57, wellbeing: 73, governance: 52 }, monthlyTrend: [58, 60, 59, 61, 62, 63, 61, 62, 63, 64, 62, 63], costDistribution: { Energía: 38, Mantenimiento: 22, Agua: 8, Limpieza: 15, Seguridad: 10, Otros: 7 }, emissionsBySource: { Electricidad: 58, Gas: 22, Refrigerantes: 12, Otros: 8 } },
+  { id: "centro-pacifico", name: "Centro Empresarial Pacífico", type: "Oficinas Clase A", city: "Bogotá", area: 32000, year: 2019, occupancy: 92, energyIntensity: 142, waterIntensity: 0.52, emissions: 980, operatingCost: 65, preventiveMaintenance: 80, dataQuality: 82, certifications: ["LEED Platinum", "WELL Silver"], riskLevel: "low", scores: { operation: 82, energyCarbon: 78, water: 85, maintenance: 80, wellbeing: 88, governance: 76 }, monthlyTrend: [76, 77, 78, 79, 80, 79, 80, 81, 80, 81, 82, 81], costDistribution: { Energía: 32, Mantenimiento: 24, Agua: 6, Limpieza: 16, Seguridad: 12, Otros: 10 }, emissionsBySource: { Electricidad: 52, Gas: 18, Refrigerantes: 10, Otros: 20 } },
+  { id: "campus-metropolitano", name: "Campus Metropolitano", type: "Campus Empresarial", city: "Ciudad de México", area: 45000, year: 2014, occupancy: 79, energyIntensity: 198, waterIntensity: 0.88, emissions: 1850, operatingCost: 72, preventiveMaintenance: 55, dataQuality: 45, certifications: [], riskLevel: "medium", scores: { operation: 64, energyCarbon: 55, water: 62, maintenance: 60, wellbeing: 66, governance: 48 }, monthlyTrend: [54, 55, 53, 56, 57, 56, 57, 58, 57, 58, 57, 58], costDistribution: { Energía: 40, Mantenimiento: 20, Agua: 10, Limpieza: 14, Seguridad: 9, Otros: 7 }, emissionsBySource: { Electricidad: 62, Gas: 20, Refrigerantes: 14, Otros: 4 } },
+  { id: "parque-logistico-sur", name: "Parque Logístico Sur", type: "Logístico", city: "Santiago", area: 28000, year: 2010, occupancy: 95, energyIntensity: 224, waterIntensity: 0.95, emissions: 1680, operatingCost: 58, preventiveMaintenance: 35, dataQuality: 28, certifications: [], riskLevel: "high", scores: { operation: 42, energyCarbon: 38, water: 45, maintenance: 35, wellbeing: 40, governance: 28 }, monthlyTrend: [35, 36, 34, 37, 36, 38, 37, 38, 39, 38, 37, 38], costDistribution: { Energía: 45, Mantenimiento: 18, Agua: 7, Limpieza: 12, Seguridad: 8, Otros: 10 }, emissionsBySource: { Electricidad: 65, Gas: 25, Refrigerantes: 8, Otros: 2 } },
+  { id: "plaza-urbana-norte", name: "Plaza Urbana Norte", type: "Mixto", city: "Quito", area: 18500, year: 2018, occupancy: 84, energyIntensity: 168, waterIntensity: 0.68, emissions: 1050, operatingCost: 70, preventiveMaintenance: 70, dataQuality: 62, certifications: ["LEED Silver"], riskLevel: "medium", scores: { operation: 72, energyCarbon: 65, water: 68, maintenance: 70, wellbeing: 60, governance: 58 }, monthlyTrend: [62, 63, 64, 63, 65, 66, 65, 66, 67, 66, 65, 66], costDistribution: { Energía: 36, Mantenimiento: 23, Agua: 8, Limpieza: 15, Seguridad: 11, Otros: 7 }, emissionsBySource: { Electricidad: 55, Gas: 25, Refrigerantes: 15, Otros: 5 } },
+  { id: "edificio-central", name: "Edificio Central", type: "Oficinas Corporativo", city: "Lima", area: 15000, year: 2008, occupancy: 81, energyIntensity: 212, waterIntensity: 0.82, emissions: 1380, operatingCost: 82, preventiveMaintenance: 48, dataQuality: 40, certifications: [], riskLevel: "high", scores: { operation: 55, energyCarbon: 48, water: 52, maintenance: 50, wellbeing: 45, governance: 42 }, monthlyTrend: [48, 49, 47, 50, 49, 50, 51, 50, 49, 50, 49, 50], costDistribution: { Energía: 42, Mantenimiento: 19, Agua: 9, Limpieza: 14, Seguridad: 9, Otros: 7 }, emissionsBySource: { Electricidad: 60, Gas: 22, Refrigerantes: 13, Otros: 5 } }
+];
+
+const roadmapPhases = [
+  { num: 1, name: 'Visibilidad', time: '0-3 meses', investment: 'Baja', responsible: 'Director de Operaciones', activities: ['Consolidación de información', 'Línea base', 'Verificación de datos'], results: ['Línea base consolidada', 'Mapa de brechas inicial'], dependencies: ['Disponibilidad de información'], indicators: ['% datos verificados'] },
+  { num: 2, name: 'Control', time: '3-6 meses', investment: 'Moderada', responsible: 'Facility Manager', activities: ['Submedición', 'Indicadores', 'Rutinas operativas'], results: ['Dashboard activo', 'Rutinas formalizadas'], dependencies: ['Fase 1 completada'], indicators: ['# submedidores activos'] },
+  { num: 3, name: 'Optimización', time: '6-12 meses', investment: 'Moderada-Alta', responsible: 'Facility Manager / Sostenibilidad', activities: ['Ajustes de operación', 'Mantenimiento', 'Reducción de consumos'], results: ['Consumos reducidos', 'CAPEX priorizado'], dependencies: ['Fase 2 completada'], indicators: ['% reducción consumo'] },
+  { num: 4, name: 'Transformación', time: '12-24 meses', investment: 'Alta', responsible: 'Director de Sostenibilidad', activities: ['Certificaciones', 'Net Zero', 'Digitalización'], results: ['Certificaciones en proceso', 'Ruta Net Zero'], dependencies: ['Fase 3 completada'], indicators: ['# certificaciones'] },
+  { num: 5, name: 'Verificación y Valor', time: '24+ meses', investment: 'Moderada', responsible: 'Asset Manager', activities: ['Medición de resultados', 'Reportabilidad ESG'], results: ['Resultados verificados', 'Reporte ESG'], dependencies: ['Fase 4 completada'], indicators: ['Score GRESB'] }
+];
+
+const services = [
+  { id: 'leed', name: 'LEED v5 O+M', icon: 'award', url: 'https://www.regenerativat.com/leed-v5-om' },
+  { id: 'ecometricas', name: 'Ecométricas', icon: 'bar-chart-3', url: 'https://www.regenerativat.com/ecometricas' },
+  { id: 'gresb', name: 'GRESB', icon: 'briefcase', url: 'https://www.regenerativat.com/gresb' },
+  { id: 'netzero', name: 'Net Zero', icon: 'leaf', url: 'https://www.regenerativat.com/net-zero' },
+  { id: 'portafolio', name: 'Portafolio Verde', icon: 'building-2', url: 'https://www.regenerativat.com/portafolio-verde' },
+  { id: 'well', name: 'WELL', icon: 'heart-pulse', url: 'https://www.regenerativat.com/well' }
+];
+
+const sliderConfig = [
+  { key: 'energyReduction', label: 'Reducción de energía', min: 0, max: 40, unit: '%' },
+  { key: 'waterReduction', label: 'Reducción de agua', min: 0, max: 35, unit: '%' },
+  { key: 'emissionsReduction', label: 'Reducción de emisiones', min: 0, max: 50, unit: '%' },
+  { key: 'preventiveMaintenance', label: 'Mantenimiento preventivo', min: 0, max: 100, unit: '%' },
+  { key: 'occupancyImprovement', label: 'Mejora de ocupación', min: 0, max: 20, unit: '%' },
+  { key: 'dataQuality', label: 'Calidad de datos', min: 0, max: 100, unit: '%' }
+];
+
+const toggleConfig = [
+  { key: 'renewableEnergy', label: 'Energía renovable' },
+  { key: 'subMetering', label: 'Submedición' },
+  { key: 'operationalPlatform', label: 'Plataforma operacional' },
+  { key: 'leedProgram', label: 'Programa LEED v5 O+M' },
+  { key: 'wellProgram', label: 'Programa WELL' },
+  { key: 'gresbPrep', label: 'Preparación GRESB' },
+  { key: 'netZeroRoadmap', label: 'Hoja de ruta Net Zero' }
+];
+
+const state = {
+  currentStage: 'cover',
+  selectedBuildingId: null,
+  customBuildings: [],
+  comparisonBuildingIds: [],
+  scenario: { energyReduction: 0, waterReduction: 0, emissionsReduction: 0, preventiveMaintenance: 0, occupancyImprovement: 0, dataQuality: 0, renewableEnergy: false, subMetering: false, operationalPlatform: false, leedProgram: false, wellProgram: false, gresbPrep: false, netZeroRoadmap: false, investmentLevel: 'moderate' }
+};
+
+const chartInstances = {};
+function destroyChart(id) { if (chartInstances[id]) { chartInstances[id].destroy(); delete chartInstances[id]; } }
+function createChart(id, config) { destroyChart(id); const ctx = document.getElementById(id); if (!ctx) return null; chartInstances[id] = new Chart(ctx, config); return chartInstances[id]; }
+
+function calculateIndex(scores) {
+  return Math.round(scores.operation * 0.20 + scores.energyCarbon * 0.20 + scores.water * 0.10 + scores.maintenance * 0.20 + scores.wellbeing * 0.10 + scores.governance * 0.20);
+}
+function getClassification(score) {
+  if (score < 40) return { label: 'Crítico', color: 'red', class: 'risk' };
+  if (score < 60) return { label: 'Vulnerable', color: 'amber', class: 'warning' };
+  if (score < 75) return { label: 'En transición', color: 'gold', class: 'warning' };
+  if (score < 90) return { label: 'Avanzado', color: 'green', class: 'good' };
+  return { label: 'Líder', color: 'green', class: 'good' };
+}
+function getBuilding(id) { return [...buildings, ...state.customBuildings].find(b => b.id === id); }
+function getAllBuildings() { return [...buildings, ...state.customBuildings]; }
+function formatDate() { return new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }); }
+
+function navigateTo(stage) {
+  document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById(`stage-${stage}`);
+  if (target) { target.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  document.getElementById('navBar').classList.toggle('hidden', stage === 'cover');
+  document.querySelectorAll('.nav-step').forEach(s => s.classList.remove('active'));
+  const navStep = document.querySelector(`.nav-step[data-stage="${stage}"]`);
+  if (navStep) navStep.classList.add('active');
+
+  if (stage === 'portfolio') renderPortfolio();
+  if (stage === 'dashboard') renderDashboard();
+  if (stage === 'diagnosis') renderDiagnosis();
+  if (stage === 'simulator') renderSimulator();
+  if (stage === 'roadmap') renderRoadmap();
+  if (stage === 'report') renderReport();
+  if (stage === 'comparison') renderComparison();
+
+  state.currentStage = stage;
+  lucide.createIcons();
+}
+
+/* ============================================================
+   PORTAFOLIO
+   ============================================================ */
+function renderPortfolio() {
+  const grid = document.getElementById('portfolioGrid');
+  const fType = document.getElementById('filterType').value;
+  const fCity = document.getElementById('filterCity').value;
+  const fRisk = document.getElementById('filterRisk').value;
+
+  const filtered = getAllBuildings().filter(b => {
+    if (fType && b.type !== fType) return false;
+    if (fCity && b.city !== fCity) return false;
+    if (fRisk && b.riskLevel !== fRisk) return false;
+    return true;
+  });
+
+  grid.innerHTML = filtered.map(b => {
+    const index = calculateIndex(b.scores);
+    const cls = getClassification(index);
+    const windows = Array.from({length: 18}, () => `<span class="${Math.random() > 0.4 ? 'lit' : ''}"></span>`).join('');
+    return `
+      <div class="building-card" onclick="openBuilding('${b.id}')">
+        <div class="building-card-img">
+          <div class="building-card-img-windows">${windows}</div>
+          <div class="building-card-risk"><span class="badge badge-${cls.color}">Riesgo ${b.riskLevel === 'low' ? 'Bajo' : b.riskLevel === 'medium' ? 'Medio' : 'Alto'}</span></div>
+        </div>
+        <div class="building-card-body">
+          <div class="building-card-type">${b.type}</div>
+          <h3>${b.name}</h3>
+          <p style="font-size: 0.82rem; margin-bottom: 16px;"><i data-lucide="map-pin" style="width:14px;height:14px;display:inline;vertical-align:middle;"></i> ${b.city} · ${b.year}</p>
+          <div class="building-card-stats">
+            <div><div class="building-card-stat-label">Área</div><div class="building-card-stat-value">${b.area.toLocaleString()} m²</div></div>
+            <div><div class="building-card-stat-label">Ocupación</div><div class="building-card-stat-value">${b.occupancy}%</div></div>
+            <div><div class="building-card-stat-label">Energía</div><div class="building-card-stat-value">${b.energyIntensity}</div></div>
+            <div><div class="building-card-stat-label">Índice</div><div class="building-card-stat-value">${index}/100</div></div>
+          </div>
+          <div class="building-card-footer">
+            <span class="badge badge-${cls.color}">${cls.label}</span>
+            <button class="btn btn-primary btn-sm">Abrir <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+  lucide.createIcons();
+}
+
+function openBuilding(id) {
+  state.selectedBuildingId = id;
+  state.scenario = { energyReduction: 0, waterReduction: 0, emissionsReduction: 0, preventiveMaintenance: 0, occupancyImprovement: 0, dataQuality: 0, renewableEnergy: false, subMetering: false, operationalPlatform: false, leedProgram: false, wellProgram: false, gresbPrep: false, netZeroRoadmap: false, investmentLevel: 'moderate' };
+  navigateTo('dashboard');
+}
+
+function submitCreateAsset(e) {
+  e.preventDefault();
+  const data = new FormData(e.target);
+  const scores = { operation: 60, energyCarbon: 55, water: 60, maintenance: 55, wellbeing: 60, governance: 50 };
+  const newB = {
+    id: 'custom-' + Date.now(), name: data.get('name'), type: data.get('type'), city: data.get('city'),
+    area: parseInt(data.get('area')), year: parseInt(data.get('year')), occupancy: parseInt(data.get('occupancy')),
+    energyIntensity: parseInt(data.get('energyIntensity')), waterIntensity: parseFloat(data.get('waterIntensity')),
+    emissions: parseInt(data.get('emissions')), operatingCost: parseInt(data.get('operatingCost')),
+    preventiveMaintenance: 50, dataQuality: 40, certifications: [], riskLevel: "medium", scores: scores,
+    monthlyTrend: [55, 56, 54, 57, 56, 58, 57, 58, 59, 58, 57, 58],
+    costDistribution: { Energía: 38, Mantenimiento: 22, Agua: 8, Limpieza: 15, Seguridad: 10, Otros: 7 },
+    emissionsBySource: { Electricidad: 60, Gas: 20, Refrigerantes: 15, Otros: 5 }
+  };
+  state.customBuildings.push(newB);
+  document.getElementById('createModal').classList.remove('active');
+  e.target.reset();
+  openBuilding(newB.id);
+}
+
+/* ============================================================
+   DASHBOARD
+   ============================================================ */
+function renderDashboard() {
+  const b = getBuilding(state.selectedBuildingId);
+  if (!b) return navigateTo('portfolio');
+
+  const index = calculateIndex(b.scores);
+  const cls = getClassification(index);
+
+  document.getElementById('dashboardHeaderContent').innerHTML = `
+    <span class="eyebrow" style="color: var(--green-light);">${b.type}</span>
+    <h2>${b.name}</h2>
+    <div class="dashboard-status"><span class="traffic-dot tl-${cls.color === 'red' ? 'red' : cls.color === 'amber' ? 'amber' : cls.color === 'gold' ? 'gold' : 'green'}"></span> Estado: ${cls.label}</div>
+    <div class="dashboard-header-meta">
+      <div><div class="dashboard-meta-label">Ubicación</div><div class="dashboard-meta-value">${b.city}</div></div>
+      <div><div class="dashboard-meta-label">Área</div><div class="dashboard-meta-value">${b.area.toLocaleString()} m²</div></div>
+      <div><div class="dashboard-meta-label">Ocupación</div><div class="dashboard-meta-value">${b.occupancy}%</div></div>
+      <div><div class="dashboard-meta-label">Año</div><div class="dashboard-meta-value">${b.year}</div></div>
+      <div><div class="dashboard-meta-label">Actualización</div><div class="dashboard-meta-value">${formatDate()}</div></div>
+    </div>
+  `;
+
+  const gaugeArc = document.getElementById('gaugeArc');
+  const offset = 251 * (1 - index / 100);
+  gaugeArc.style.strokeDashoffset = offset;
+  gaugeArc.style.stroke = cls.color === 'red' ? '#C84C4C' : cls.color === 'amber' ? '#D99332' : cls.color === 'gold' ? '#C69A45' : '#267A50';
+  document.getElementById('indexGaugeNumber').textContent = index;
+
+  document.getElementById('indexInfo').innerHTML = `
+    <span class="badge badge-${cls.color}">${cls.label}</span>
+    <h3 style="margin: 12px 0;">Índice de Desempeño del Activo</h3>
+    <p>El activo se encuentra en estado <strong>${cls.label.toLowerCase()}</strong>. ${index < 60 ? 'Existen brechas significativas que requieren atención prioritaria.' : index < 75 ? 'El desempeño es aceptable pero con oportunidades de mejora.' : 'El activo demuestra un desempeño sólido.'}</p>
+    <div class="methodological-note" style="margin-top:16px;"><i data-lucide="info" style="width:16px;height:16px;flex-shrink:0;margin-top:2px;"></i><span>Simulación ejecutiva basada en supuestos configurables. No sustituye una auditoría técnica.</span></div>
+  `;
+
+  const dimConfig = [
+    { key: 'operation', name: 'Operación', icon: 'settings' },
+    { key: 'energyCarbon', name: 'Energía y Carbono', icon: 'zap' },
+    { key: 'water', name: 'Agua', icon: 'droplet' },
+    { key: 'maintenance', name: 'Mantenimiento', icon: 'wrench' },
+    { key: 'wellbeing', name: 'Bienestar', icon: 'users' },
+    { key: 'governance', name: 'Gobernanza ESG', icon: 'shield-check' }
+  ];
+
+  document.getElementById('dimensionsGrid').innerHTML = dimConfig.map(d => {
+    const score = b.scores[d.key];
+    const clsDim = getClassification(score);
+    return `
+      <div class="dimension-card ${clsDim.class}">
+        <div class="dimension-header">
+          <div class="dimension-icon"><i data-lucide="${d.icon}" style="width:22px;height:22px;"></i></div>
+          <div><div class="dimension-score-num">${score}</div><div style="font-size:0.7rem;color:var(--gray-warm);">/ 100</div></div>
+        </div>
+        <div style="font-weight:600;margin-bottom:8px;">${d.name}</div>
+        <span class="badge badge-${clsDim.color}">${clsDim.label}</span>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('execIndicators').innerHTML = `
+    <div class="chart-card"><div class="eyebrow">Intensidad energética</div><div class="mono" style="font-size:1.6rem;font-weight:600;">${b.energyIntensity} <span style="font-size:0.8rem;color:var(--gray-warm);">kWh/m²</span></div></div>
+    <div class="chart-card"><div class="eyebrow">Intensidad hídrica</div><div class="mono" style="font-size:1.6rem;font-weight:600;">${b.waterIntensity} <span style="font-size:0.8rem;color:var(--gray-warm);">m³/m²</span></div></div>
+    <div class="chart-card"><div class="eyebrow">Emisiones</div><div class="mono" style="font-size:1.6rem;font-weight:600;">${b.emissions} <span style="font-size:0.8rem;color:var(--gray-warm);">tCO₂e</span></div></div>
+    <div class="chart-card"><div class="eyebrow">Costo operativo</div><div class="mono" style="font-size:1.6rem;font-weight:600;">${b.operatingCost} <span style="font-size:0.8rem;color:var(--gray-warm);">USD/m²</span></div></div>
+  `;
+
+  setTimeout(() => {
+    createChart('chartRadar', { type: 'radar', data: { labels: dimConfig.map(d=>d.name), datasets: [{ data: dimConfig.map(d=>b.scores[d.key]), backgroundColor: 'rgba(38, 122, 80, 0.15)', borderColor: '#267A50', borderWidth: 2 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { r: { beginAtZero: true, max: 100 } } } });
+    createChart('chartBar', { type: 'bar', data: { labels: dimConfig.map(d=>d.name), datasets: [{ label: 'Actual', data: dimConfig.map(d=>b.scores[d.key]), backgroundColor: '#267A50' }, { label: 'Potencial', data: dimConfig.map(d=>Math.min(95, b.scores[d.key] + 20)), backgroundColor: '#57AE79' }] }, options: { responsive: true, maintainAspectRatio: false } });
+    createChart('chartTrend', { type: 'line', data: { labels: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'], datasets: [{ data: b.monthlyTrend, borderColor: '#267A50', backgroundColor: 'rgba(38, 122, 80, 0.08)', fill: true, tension: 0.4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+    createChart('chartCost', { type: 'doughnut', data: { labels: Object.keys(b.costDistribution), datasets: [{ data: Object.values(b.costDistribution), backgroundColor: ['#123D2A', '#267A50', '#57AE79', '#C69A45', '#D99332', '#69736D'] }] }, options: { responsive: true, maintainAspectRatio: false } });
+    createChart('chartEmissions', { type: 'bar', data: { labels: Object.keys(b.emissionsBySource), datasets: [{ data: Object.values(b.emissionsBySource), backgroundColor: '#267A50' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+    renderBuildingMap(b);
+  }, 100);
+  lucide.createIcons();
+}
+
+function renderBuildingMap(b) {
+  document.getElementById('buildingMapContainer').innerHTML = `
+    <h4>Mapa del Edificio</h4>
+    <svg viewBox="0 0 300 420" style="width:100%;max-width:400px;margin:0 auto;display:block;">
+      <rect x="0" y="390" width="300" height="30" fill="#E2E6E1"/>
+      <g class="bmap-zone" onclick="selectZone('cubierta')"><rect x="60" y="20" width="180" height="25" fill="#123D2A" rx="4"/><rect x="80" y="15" width="30" height="8" fill="#267A50"/><rect x="120" y="15" width="30" height="8" fill="#267A50"/><circle cx="200" cy="18" r="3" fill="#C84C4C"/></g>
+      <g class="bmap-zone" onclick="selectZone('oficinas')"><rect x="60" y="40" width="180" height="200" fill="none" stroke="#123D2A" stroke-width="2" rx="4"/><rect x="65" y="55" width="170" height="180" fill="#F5F2E9" rx="2"/><text x="150" y="150" text-anchor="middle" fill="#69736D" font-size="10">Oficinas</text></g>
+      <g class="bmap-zone" onclick="selectZone('lobby')"><rect x="65" y="240" width="170" height="50" fill="#267A50" opacity="0.15" rx="2"/><text x="150" y="270" text-anchor="middle" fill="#123D2A" font-size="10" font-weight="600">Lobby</text></g>
+      <g class="bmap-zone" onclick="selectZone('tecnicos')"><rect x="65" y="295" width="170" height="25" fill="#D99332" opacity="0.15" rx="2"/><text x="150" y="312" text-anchor="middle" fill="#69736D" font-size="8">Cuartos técnicos</text></g>
+      <g class="bmap-zone" onclick="selectZone('estacionamientos')"><rect x="40" y="320" width="220" height="50" fill="#69736D" opacity="0.2" rx="4"/><text x="150" y="350" text-anchor="middle" fill="#69736D" font-size="10">Estacionamientos</text></g>
+    </svg>
+  `;
+  selectZone('cubierta');
+}
+
+function selectZone(zone) {
+  const b = getBuilding(state.selectedBuildingId);
+  const scores = { cubierta: b.scores.energyCarbon, oficinas: b.scores.wellbeing, lobby: b.scores.operation, tecnicos: b.scores.maintenance, estacionamientos: 40, fachada: b.scores.energyCarbon, comunes: b.scores.wellbeing, paisajismo: b.scores.water };
+  const score = scores[zone] || 60;
+  const cls = getClassification(score);
+  document.getElementById('bmapZoneDetail').innerHTML = `
+    <div class="chart-card"><h4>Zona: ${zone.charAt(0).toUpperCase() + zone.slice(1)}</h4><div class="mono" style="font-size:2rem;font-weight:600;color:var(--green-deep);">${score}</div><span class="badge badge-${cls.color}">${cls.label}</span><p style="margin-top:16px;font-size:0.85rem;">Información detallada de la zona seleccionada. Indicadores, riesgos y acciones sugeridas específicas para esta área del edificio.</p></div>
+  `;
+}
+
+/* ============================================================
+   DIAGNÓSTICO
+   ============================================================ */
+function renderDiagnosis() {
+  const b = getBuilding(state.selectedBuildingId);
+  if (!b) return navigateTo('portfolio');
+  const tabs = ['operation', 'energyCarbon', 'water', 'maintenance', 'wellbeing', 'governance'];
+  const names = { operation: 'Operación', energyCarbon: 'Energía', water: 'Agua', maintenance: 'Mantenimiento', wellbeing: 'Bienestar', governance: 'Gobernanza' };
+
+  document.getElementById('diagnosisTabs').innerHTML = tabs.map((t, i) => `<button class="diagnosis-tab ${i===0?'active':''}" onclick="switchDiagnosisTab('${t}', '${names[t]}')">${names[t]} (${b.scores[t]})</button>`).join('');
+  switchDiagnosisTab('operation', 'Operación');
+}
+
+function switchDiagnosisTab(key, name) {
+  const b = getBuilding(state.selectedBuildingId);
+  const score = b.scores[key];
+  const cls = getClassification(score);
+  document.querySelectorAll('.diagnosis-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+
+  document.getElementById('diagnosisContent').innerHTML = `
+    <div class="diagnosis-module">
+      <div class="diagnosis-panel">
+        <h4>${name}</h4>
+        <div style="display:flex;align-items:center;gap:16px;margin:20px 0;padding:16px;background:var(--cream);border-radius:8px;">
+          <div class="mono" style="font-size:2.2rem;font-weight:600;">${score}</div>
+          <div><span class="badge badge-${cls.color}">${cls.label}</span><p style="font-size:0.82rem;margin-top:4px;">Madurez: ${cls.label}</p></div>
+        </div>
+        <p>Evaluación de criterios específicos del módulo. Se identifican las brechas críticas que requieren atención para mejorar el puntaje y la madurez del activo en esta dimensión.</p>
+      </div>
+      <div class="diagnosis-panel">
+        <h4>Análisis y Recomendación</h4>
+        <div class="urgency-banner ${score < 50 ? 'urgency-high' : score < 75 ? 'urgency-medium' : 'urgency-low'}">
+          <strong>Urgencia: ${score < 50 ? 'Crítica' : score < 75 ? 'Alta' : 'Media'}</strong>
+        </div>
+        <div class="recommendation-box">
+          <div class="eyebrow" style="color:var(--green-light);">Recomendación</div>
+          <p style="color:white;">${score < 60 ? 'Iniciar con formalización de procesos y consolidación de información.' : 'Avanzar hacia sistemas predictivos y mayor madurez.'}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   SIMULADOR
+   ============================================================ */
+function renderSimulator() {
+  const b = getBuilding(state.selectedBuildingId);
+  if (!b) return navigateTo('portfolio');
+
+  document.getElementById('simSliders').innerHTML = sliderConfig.map(s => `
+    <div style="margin-bottom:16px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:0.82rem;">${s.label}</span><span class="mono" style="font-size:0.82rem;font-weight:600;color:var(--green-medium);" id="slider-val-${s.key}">${state.scenario[s.key]}${s.unit}</span></div>
+      <input type="range" class="slider" min="${s.min}" max="${s.max}" value="${state.scenario[s.key]}" oninput="updateSlider('${s.key}', this.value, '${s.unit}')">
+    </div>
+  `).join('');
+
+  document.getElementById('simToggles').innerHTML = toggleConfig.map(t => `
+    <div class="toggle-item ${state.scenario[t.key] ? 'active' : ''}" onclick="toggleParam('${t.key}')"><span style="font-size:0.82rem;">${t.label}</span><div class="toggle-switch"></div></div>
+  `).join('');
+
+  document.querySelectorAll('.investment-option').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.value === state.scenario.investmentLevel);
+    opt.onclick = () => { state.scenario.investmentLevel = opt.dataset.value; document.querySelectorAll('.investment-option').forEach(o => o.classList.remove('active')); opt.classList.add('active'); updateScenario(); };
+  });
+
+  updateScenario();
+  lucide.createIcons();
+}
+
+function updateSlider(key, value, unit) {
+  state.scenario[key] = parseInt(value);
+  document.getElementById(`slider-val-${key}`).textContent = value + unit;
+  updateScenario();
+}
+
+function toggleParam(key) {
+  state.scenario[key] = !state.scenario[key];
+  renderSimulator();
+}
+
+function calculateScenario() {
+  const b = getBuilding(state.selectedBuildingId);
+  const s = state.scenario;
+  const f = { low: 0.55, moderate: 0.75, high: 0.90, transformative: 1.0 }[s.investmentLevel];
+
+  let scores = { ...b.scores };
+  scores.energyCarbon += s.energyReduction * 0.5 * f;
+  scores.water += s.waterReduction * 0.4 * f;
+  scores.maintenance += s.preventiveMaintenance * 0.3 * f;
+  scores.operation += s.preventiveMaintenance * 0.08 * f + s.occupancyImprovement * 0.4 * f;
+  scores.governance += s.dataQuality * 0.2 * f;
+
+  if (s.renewableEnergy) scores.energyCarbon += 8 * f;
+  if (s.subMetering) scores.governance += 5 * f;
+  if (s.operationalPlatform) scores.operation += 10 * f;
+  if (s.leedProgram) scores.governance += 12 * f;
+  if (s.wellProgram) scores.wellbeing += 15 * f;
+  if (s.gresbPrep) scores.governance += 10 * f;
+  if (s.netZeroRoadmap) scores.energyCarbon += 8 * f;
+
+  Object.keys(scores).forEach(k => scores[k] = Math.min(100, Math.max(0, Math.round(scores[k]))));
+  const newIndex = calculateIndex(scores);
+  const oldIndex = calculateIndex(b.scores);
+
+  return {
+    oldIndex, newIndex, oldScores: b.scores, newScores: scores,
+    energyOld: b.energyIntensity, energyNew: Math.round(b.energyIntensity * (1 - s.energyReduction / 100)),
+    emissionsOld: b.emissions, emissionsNew: Math.round(b.emissions * (1 - s.emissionsReduction / 100)),
+    costOld: b.operatingCost, costNew: parseFloat((b.operatingCost * (1 - (s.energyReduction * 0.4) / 100)).toFixed(1))
+  };
+}
+
+function updateScenario() {
+  const r = calculateScenario();
+  const cards = [
+    { label: 'Índice general', old: r.oldIndex, new: r.newIndex, primary: true },
+    { label: 'Energía', old: r.energyOld, new: r.energyNew, invert: true },
+    { label: 'Emisiones', old: r.emissionsOld, new: r.emissionsNew, invert: true },
+    { label: 'Costo operativo', old: r.costOld, new: r.costNew, invert: true }
+  ];
+
+  document.getElementById('resultsSummary').innerHTML = cards.map(c => {
+    const delta = c.invert ? c.old - c.new : c.new - c.old;
+    const isPositive = c.invert ? delta > 0 : delta > 0;
+    return `<div class="result-card ${c.primary ? 'primary' : ''}"><div class="eyebrow">${c.label}</div><div><span class="result-card-old">${c.old}</span> → <span class="result-card-new">${c.new}</span></div><div class="${isPositive ? 'delta-positive' : 'delta-negative'}" style="font-size:0.78rem;font-weight:600;margin-top:6px;">${isPositive ? '↑' : '↓'} ${Math.abs(delta)}</div></div>`;
+  }).join('');
+
+  createChart('chartScenario', { type: 'bar', data: { labels: ['Operación', 'Energía', 'Agua', 'Mantenimiento', 'Bienestar', 'Gobernanza'], datasets: [{ label: 'Actual', data: Object.values(r.oldScores), backgroundColor: '#69736D' }, { label: 'Escenario', data: Object.values(r.newScores), backgroundColor: '#267A50' }] }, options: { responsive: true, maintainAspectRatio: false } });
+
+  document.getElementById('executiveReadingText').innerHTML = `El escenario propuesto mejora el índice de ${r.oldIndex} a ${r.newIndex}. ${r.newIndex - r.oldIndex > 15 ? 'La mejora es sustancial.' : 'La mejora es moderada.'} Se recomienda priorizar la calidad de datos antes de inversiones mayores.`;
+
+  document.getElementById('servicesGrid').innerHTML = services.map(s => `
+    <div class="service-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><i data-lucide="${s.icon}" style="width:24px;height:24px;color:var(--green-medium);"></i><span class="badge badge-green">Recomendado</span></div>
+      <h4 style="font-family:var(--font-sans);font-size:1.05rem;font-weight:600;margin-bottom:8px;">${s.name}</h4>
+      <a href="${s.url}" target="_blank" class="btn btn-secondary btn-sm btn-full">Conocer más</a>
+    </div>
+  `).join('');
+  lucide.createIcons();
+}
+
+/* ============================================================
+   HOJA DE RUTA
+   ============================================================ */
+function renderRoadmap() {
+  document.getElementById('roadmapPhases').innerHTML = roadmapPhases.map(p => `
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-marker">${p.num}</div>
+      <div class="roadmap-phase-content">
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;margin-bottom:16px;"><h4 style="font-family:var(--font-sans);font-weight:700;text-transform:uppercase;">Fase ${p.num}: ${p.name}</h4><div><span class="badge badge-cream">${p.time}</span> <span class="badge badge-gold">${p.investment}</span></div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div><div class="eyebrow">Actividades</div><ul style="list-style:none;">${p.activities.map(a => `<li style="font-size:0.82rem;color:var(--gray-warm);margin-bottom:4px;">• ${a}</li>`).join('')}</ul></div>
+          <div><div class="eyebrow">Resultados esperados</div><ul style="list-style:none;">${p.results.map(a => `<li style="font-size:0.82rem;color:var(--gray-warm);margin-bottom:4px;">• ${a}</li>`).join('')}</ul></div>
+        </div>
+        <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-light);"><span class="eyebrow">Responsable</span> <span style="font-size:0.85rem;font-weight:600;">${p.responsible}</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============================================================
+   REPORTE
+   ============================================================ */
+function renderReport() {
+  const b = getBuilding(state.selectedBuildingId);
+  if (!b) return navigateTo('portfolio');
+  const r = calculateScenario();
+  const index = calculateIndex(b.scores);
+  const cls = getClassification(index);
+
+  document.getElementById('reportContainer').innerHTML = `
+    <div class="report-cover">
+      <div class="eyebrow" style="color:var(--green-light);">Reporte Ejecutivo</div>
+      <h1 style="color:white;margin:16px 0;">Regenerativa Asset Twin™</h1>
+      <div style="font-family:var(--font-serif);font-size:2rem;color:var(--gold);margin:24px 0 8px;">${b.name}</div>
+      <div style="font-family:var(--font-mono);font-size:0.85rem;color:rgba(245,242,233,0.6);">${formatDate()}</div>
+    </div>
+    <div class="report-page">
+      <h3>Resumen Ejecutivo</h3>
+      <p>El activo ${b.name} presenta un índice de desempeño de ${index}/100, clasificado como ${cls.label}. El escenario simulado proyecta un potencial de mejora a ${r.newIndex}/100.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:24px 0;">
+        <div style="text-align:center;padding:20px;background:var(--cream);border-radius:12px;"><div class="mono" style="font-size:2rem;font-weight:600;">${index}</div><div class="eyebrow">Índice Actual</div></div>
+        <div style="text-align:center;padding:20px;background:var(--cream);border-radius:12px;"><div class="mono" style="font-size:2rem;font-weight:600;">${r.newIndex}</div><div class="eyebrow">Índice Proyectado</div></div>
+        <div style="text-align:center;padding:20px;background:var(--cream);border-radius:12px;"><div class="mono" style="font-size:2rem;font-weight:600;color:var(--green-medium);">+${r.newIndex - index}</div><div class="eyebrow">Mejora Potencial</div></div>
+      </div>
+      <div class="methodological-note"><i data-lucide="info" style="width:16px;height:16px;flex-shrink:0;"></i><span>Los resultados corresponden a una simulación ejecutiva. No sustituyen una auditoría técnica.</span></div>
+    </div>
+  `;
+  lucide.createIcons();
+}
+
+/* ============================================================
+   COMPARACIÓN
+   ============================================================ */
+function renderComparison() {
+  const all = getAllBuildings();
+  document.getElementById('comparisonSelector').innerHTML = all.map(b => `
+    <div class="comparison-chip ${state.comparisonBuildingIds.includes(b.id) ? 'selected' : ''}" onclick="toggleComparison('${b.id}')">${b.name}</div>
+  `).join('');
+
+  if (state.comparisonBuildingIds.length < 2) {
+    document.getElementById('comparisonContent').innerHTML = `<div class="chart-card" style="text-align:center;padding:48px;"><h3>Seleccione al menos dos activos</h3></div>`;
+    return;
+  }
+
+  const selected = state.comparisonBuildingIds.map(id => getBuilding(id));
+  document.getElementById('comparisonContent').innerHTML = `
+    <div class="chart-card" style="overflow-x:auto;">
+      <table class="comparison-table" style="width:100%;border-collapse:collapse;">
+        <thead><tr><th style="text-align:left;padding:14px;">Indicador</th>${selected.map(b => `<th>${b.name}</th>`).join('')}</tr></thead>
+        <tbody>
+          <tr><td style="padding:14px;font-weight:600;">Índice general</td>${selected.map(b => `<td class="mono">${calculateIndex(b.scores)}</td>`).join('')}</tr>
+          <tr><td style="padding:14px;font-weight:600;">Energía</td>${selected.map(b => `<td class="mono">${b.energyIntensity}</td>`).join('')}</tr>
+          <tr><td style="padding:14px;font-weight:600;">Agua</td>${selected.map(b => `<td class="mono">${b.waterIntensity}</td>`).join('')}</tr>
+          <tr><td style="padding:14px;font-weight:600;">Emisiones</td>${selected.map(b => `<td class="mono">${b.emissions}</td>`).join('')}</tr>
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function toggleComparison(id) {
+  const idx = state.comparisonBuildingIds.indexOf(id);
+  if (idx > -1) state.comparisonBuildingIds.splice(idx, 1);
+  else if (state.comparisonBuildingIds.length < 4) state.comparisonBuildingIds.push(id);
+  renderComparison();
+}
+
+/* ============================================================
+   INICIALIZACIÓN
+   ============================================================ */
+// Hero windows
+document.getElementById('heroWindows').innerHTML = Array.from({length: 24}, () => `<div class="building-window ${Math.random() > 0.4 ? 'lit' : ''}"></div>`).join('');
+
+lucide.createIcons();
+</script>
+
+<!-- ASSET REPLACEMENT GUIDE
+1. Logo Regenerativa: Reemplazar los divs con clase "nav-logo-mark" por <img src="./assets/logo-regenerativa.png" alt="Regenerativa" />
+2. Form ID HubSpot: Reemplazar "FORM_ID_A_REEMPLAZAR" por el ID real del formulario en HubSpot.
+3. URL Canonical: Actualizar la etiqueta <link rel="canonical"> con la URL final.
+4. Open Graph: Actualizar og:image y og:url con las URLs de producción.
+5. Código de seguimiento: Verificar que el Portal ID 51373533 de HubSpot sea correcto.
+6. Datos demostrativos: Modificar el array `buildings` en el script con datos reales si es necesario.
+-->
+</body>
+</html>
